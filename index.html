@@ -65,14 +65,14 @@
                         This interactive hub analyzes the operational core of CEVA Logistics, a global 3PL leader. It dissects the company's dual systems—Contract Logistics and Freight Management—to reveal how Artificial Intelligence is being strategically embedded into every process. CEVA's approach is defined by a pragmatic "buy-and-integrate" model, forging key partnerships and building a centralized data foundation to drive efficiency and innovation.
                     </p>
                     <p class="text-slate-600 mb-6">
-                        Use the navigation above to explore specific operational processes, view the landscape through the lens of different AI capabilities, or review a proposed AI adoption roadmap for the Malaysian branch.
+                        Use the navigation above or click a division below to explore specific operational processes, view the landscape through the lens of different AI capabilities, or review a proposed AI adoption roadmap for the Malaysian branch.
                     </p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-center">
-                        <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                        <div class="division-card bg-slate-50 p-4 rounded-lg border border-slate-200 cursor-pointer hover:bg-sky-100 hover:border-sky-300 transition-colors" data-division="contract">
                             <h3 class="font-bold text-lg text-slate-700">Contract Logistics</h3>
                             <p class="text-sm text-slate-500">Warehousing, Manufacturing Support, Reverse Logistics</p>
                         </div>
-                        <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                        <div class="division-card bg-slate-50 p-4 rounded-lg border border-slate-200 cursor-pointer hover:bg-sky-100 hover:border-sky-300 transition-colors" data-division="freight">
                             <h3 class="font-bold text-lg text-slate-700">Freight Management</h3>
                             <p class="text-sm text-slate-500">Ocean, Air, Ground Freight & Customs</p>
                         </div>
@@ -248,6 +248,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const processDetailsContainer = document.getElementById('process-details');
     const aiFilterButtons = document.querySelectorAll('.ai-filter-btn');
     const aiApplicationCardsContainer = document.getElementById('ai-application-cards');
+    const divisionCards = document.querySelectorAll('.division-card');
     
     function showSection(targetId) {
         contentSections.forEach(section => {
@@ -261,6 +262,16 @@ document.addEventListener('DOMContentLoaded', function() {
     navButtons.forEach(button => {
         button.addEventListener('click', () => {
             showSection(button.dataset.target);
+        });
+    });
+
+    divisionCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const divisionKey = card.dataset.division;
+            showSection('processes');
+            divisionSelector.value = divisionKey;
+            populateProcessSelector(divisionKey);
+            renderProcessDetails();
         });
     });
 
