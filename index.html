@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEVA Logistics: AI Transformation Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Serene Tech (Muted Blues & Grays) -->
+    <!-- Application Structure Plan: The SPA is designed with a tab-based navigation system to allow users to explore the report's content from three distinct angles, which is more intuitive than a linear document. 
+        1. 'Home': Provides a high-level strategic overview. 
+        2. 'Explore Processes': A task-oriented view letting users drill down from a business division (e.g., Contract Logistics) to a specific process (e.g., Warehousing) to see its mechanics (Inputs/Activities/Outputs) and relevant AI applications. This structured exploration is key for understanding operational details.
+        3. 'AI Technology Lens': A cross-functional view that organizes information by AI capability (e.g., Robotics). This helps users understand the broad impact of a specific technology across the entire organization.
+        4. 'Malaysia AI Roadmap': A dedicated, prescriptive section that synthesizes the report's recommendations into an actionable plan, directly addressing a key user query. The phased approach makes the strategy tangible. 
+        This multi-faceted structure empowers users to find information based on their specific interest (a process, a technology, or a strategy) rather than forcing them through a predefined narrative. -->
+    <!-- Visualization & Content Choices: 
+        - [Process Flow Diagrams]: Report Info: Inputs, Activities, Outputs for each process. Goal: Organize/Explain. Viz: HTML/CSS flexbox layout with arrows to create a clear, left-to-right flow chart. Interaction: None, pure visualization. Justification: More accessible and responsive than a static image or complex canvas drawing. Library: Tailwind CSS.
+        - [AI Application Cards]: Report Info: AI applications for each process. Goal: Inform/Compare. Viz: Styled cards with icons and tags. Interaction: Content revealed on selection. Justification: Visually groups related info, easy to scan. Library: Tailwind CSS.
+        - [AI Adoption Radar Chart]: Report Info: Synthesized assessment of AI maturity/impact per process. Goal: Compare/Relationships. Viz: Radar chart. Interaction: Tooltips on hover provide context. Justification: Excellent for comparing multiple variables (processes) against multiple axes (AI capabilities) in a single view. Library: Chart.js (Canvas).
+        - [Roadmap Timeline]: Report Info: Synthesized Malaysian adoption plan. Goal: Show Change/Sequence. Viz: Vertical timeline created with HTML/CSS. Interaction: Clickable phases could expand. Justification: Intuitively represents a phased, time-based plan. Library: Tailwind CSS. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .nav-button { transition: all 0.3s ease; }
+        .nav-button.active { background-color: #0369a1; color: white; }
+        .nav-button:not(.active):hover { background-color: #f0f9ff; }
+        .content-section { display: none; }
+        .content-section.active { display: block; }
+        .chart-container { position: relative; width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; height: 350px; max-height: 450px; }
+        @media (min-width: 768px) { .chart-container { height: 450px; } }
+        .flow-arrow { content: '→'; color: #0ea5e9; font-weight: bold; font-size: 1.5rem; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <div class="min-h-screen">
+        <header class="bg-white shadow-sm sticky top-0 z-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <span class="bg-sky-600 text-white font-bold text-2xl w-10 h-10 flex items-center justify-center rounded-lg">C</span>
+                        <h1 class="text-xl md:text-2xl font-bold text-slate-900"><img src="CEVA_Logo.jpg"> <span class="font-light">| AI Transformation Hub</span></h1>
+                    </div>
+                </div>
+                <nav class="mt-4 border-t border-slate-200 pt-2">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <button data-target="home" class="nav-button active text-sm font-medium py-2 px-3 rounded-md text-slate-700">🏠 Home</button>
+                        <button data-target="processes" class="nav-button text-sm font-medium py-2 px-3 rounded-md text-slate-700">⚙️ Explore Processes</button>
+                        <button data-target="ai-lens" class="nav-button text-sm font-medium py-2 px-3 rounded-md text-slate-700">🔬 AI Technology Lens</button>
+                        <button data-target="roadmap" class="nav-button text-sm font-medium py-2 px-3 rounded-md text-slate-700">🇲🇾 Malaysia AI Roadmap</button>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <!-- Home Section -->
+            <section id="home" class="content-section active">
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h2 class="text-2xl font-bold text-sky-800 mb-3">Orchestrating the Future of Logistics with AI</h2>
+                    <p class="text-slate-600 mb-4">
+                        This interactive hub analyzes the operational core of CEVA Logistics, a global 3PL leader. It dissects the company's dual systems—Contract Logistics and Freight Management—to reveal how Artificial Intelligence is being strategically embedded into every process. CEVA's approach is defined by a pragmatic "buy-and-integrate" model, forging key partnerships and building a centralized data foundation to drive efficiency and innovation.
+                    </p>
+                    <p class="text-slate-600 mb-6">
+                        Use the navigation above to explore specific operational processes, view the landscape through the lens of different AI capabilities, or review a proposed AI adoption roadmap for the Malaysian branch.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-center">
+                        <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                            <h3 class="font-bold text-lg text-slate-700">Contract Logistics</h3>
+                            <p class="text-sm text-slate-500">Warehousing, Manufacturing Support, Reverse Logistics</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                            <h3 class="font-bold text-lg text-slate-700">Freight Management</h3>
+                            <p class="text-sm text-slate-500">Ocean, Air, Ground Freight & Customs</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Processes Section -->
+            <section id="processes" class="content-section">
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h2 class="text-2xl font-bold text-sky-800 mb-4">Operational Process Deep Dive</h2>
+                    <p class="text-slate-600 mb-6">
+                        Select a business division and then a specific process to understand its core components (Inputs, Activities, Outputs) and see how AI is being applied to optimize it. This view breaks down the complex machinery of global logistics into understandable parts.
+                    </p>
+                    <div class="flex flex-wrap gap-4 mb-6">
+                        <select id="division-selector" class="p-2 border rounded-md bg-white shadow-sm">
+                            <option value="contract">Contract Logistics</option>
+                            <option value="freight">Freight Management</option>
+                        </select>
+                        <select id="process-selector" class="p-2 border rounded-md bg-white shadow-sm">
+                        </select>
+                    </div>
+                    <div id="process-details" class="mt-6"></div>
+                </div>
+            </section>
+
+            <!-- AI Lens Section -->
+            <section id="ai-lens" class="content-section">
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h2 class="text-2xl font-bold text-sky-800 mb-4">AI Capability View</h2>
+                     <p class="text-slate-600 mb-6">
+                        This section provides a cross-functional perspective, showing how a single AI capability is deployed across multiple different business processes at CEVA. Select an AI technology to see its diverse applications and understand its strategic impact. The chart below visualizes the estimated impact and adoption level of each AI type across CEVA's key operations.
+                    </p>
+                    <div class="chart-container mb-8">
+                        <canvas id="aiImpactChart"></canvas>
+                    </div>
+                    <div id="ai-details" class="mt-6">
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <button class="ai-filter-btn bg-sky-100 text-sky-800 py-1 px-3 rounded-full text-sm" data-ai="predictive">Predictive Analytics</button>
+                            <button class="ai-filter-btn bg-sky-100 text-sky-800 py-1 px-3 rounded-full text-sm" data-ai="robotics">Robotics/Automation</button>
+                            <button class="ai-filter-btn bg-sky-100 text-sky-800 py-1 px-3 rounded-full text-sm" data-ai="vision">Computer Vision</button>
+                            <button class="ai-filter-btn bg-sky-100 text-sky-800 py-1 px-3 rounded-full text-sm" data-ai="generative">Generative AI</button>
+                        </div>
+                        <div id="ai-application-cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Malaysia Roadmap Section -->
+            <section id="roadmap" class="content-section">
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h2 class="text-2xl font-bold text-sky-800 mb-4">Prescriptive AI Adoption Roadmap: CEVA Malaysia</h2>
+                    <p class="text-slate-600 mb-6">
+                        To capitalize on emerging AI technologies and maintain a competitive edge in the ASEAN market, this phased roadmap is proposed for CEVA's Malaysian branch. It prioritizes foundational data capabilities, targets high-impact operational efficiencies inspired by competitor successes, and builds towards strategic, long-term advantages.
+                    </p>
+                    <div class="relative border-l-2 border-sky-200 ml-4 py-4">
+                        <!-- Phase 1 -->
+                        <div class="mb-8 ml-8 relative">
+                            <div class="absolute -left-[38px] top-1 w-6 h-6 bg-sky-500 rounded-full border-4 border-white"></div>
+                            <h3 class="text-lg font-bold text-sky-700">Phase 1: Foundational Capabilities (Year 1)</h3>
+                            <p class="text-slate-500 mb-3">Focus: Data Unification & Quick Wins</p>
+                            <ul class="list-disc list-inside text-slate-600 space-y-2">
+                                <li><strong>Establish Malaysia Data Hub:</strong> Create a localized "source of truth" by integrating data from local WMS, TMS, and key client systems.</li>
+                                <li><strong>Pilot Customs Automation (IDP):</strong> Deploy AI-powered Intelligent Document Processing to automate data extraction from shipping invoices and packing lists for customs declarations, reducing manual errors by over 90%.</li>
+                                <li><strong>Workforce Upskilling:</strong> Initiate training programs for logistics planners and customs brokers on data analytics fundamentals and working with AI tools.</li>
+                            </ul>
+                        </div>
+                        <!-- Phase 2 -->
+                        <div class="mb-8 ml-8 relative">
+                            <div class="absolute -left-[38px] top-1 w-6 h-6 bg-sky-500 rounded-full border-4 border-white"></div>
+                            <h3 class="text-lg font-bold text-sky-700">Phase 2: Operational Efficiency (Years 2-3)</h3>
+                            <p class="text-slate-500 mb-3">Focus: Warehouse & Last-Mile Optimization</p>
+                             <ul class="list-disc list-inside text-slate-600 space-y-2">
+                                <li><strong>Pilot "Smart Warehouse" Robotics:</strong> Inspired by competitor DHL's success with robotics in Penang, deploy a Goods-to-Person (G2P) automated system (e.g., Exotec) in a high-volume Klang Valley fulfillment center to boost picking speed and storage density.</li>
+                                <li><strong>Predictive Last-Mile Routing:</strong> Implement an AI route optimization tool for ground transport in major urban areas (KL, JB, Penang) to reduce fuel costs and improve delivery ETAs.</li>
+                                <li><strong>Computer Vision for Quality Control:</strong> Use camera systems in returns processing to automatically grade returned electronics and apparel, speeding up triage.</li>
+                            </ul>
+                        </div>
+                        <!-- Phase 3 -->
+                        <div class="ml-8 relative">
+                            <div class="absolute -left-[38px] top-1 w-6 h-6 bg-sky-500 rounded-full border-4 border-white"></div>
+                            <h3 class="text-lg font-bold text-sky-700">Phase 3: Strategic Advantage (Years 4-5)</h3>
+                            <p class="text-slate-500 mb-3">Focus: Advanced Solutions & Customer Experience</p>
+                            <ul class="list-disc list-inside text-slate-600 space-y-2">
+                                <li><strong>Scale Successful Pilots:</strong> Based on ROI data, create a standardized rollout plan for robotics and routing AI to other key Malaysian sites.</li>
+                                <li><strong>Offer Digital Twin Services:</strong> Leverage the data hub to offer simulation and "what-if" scenario planning as a premium service to major contract logistics clients.</li>
+                                <li><strong>Launch Localized GenAI Chatbot:</strong> Integrate a Bahasa Melayu and English-capable Generative AI assistant into the `myCEVA` platform for Malaysian customers, providing instant quotes and shipment status summaries.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    const processData = {
+        contract: {
+            name: "Contract Logistics",
+            processes: {
+                warehousing: {
+                    name: "Warehousing & Fulfillment",
+                    inputs: "Inbound Goods, Customer Orders, SKU & Inventory Data",
+                    activities: "Receiving, Put-Away, Picking, Packing, Shipping, Value-Added Services",
+                    outputs: "Fulfilled Orders, Updated Inventory, Shipping Docs, KPIs",
+                    ai: [
+                        { type: 'robotics', app: "Exotec Skypod AS/RS", desc: "Goods-to-person robots increase picking speed and storage density." },
+                        { type: 'predictive', app: "Digital Twin Simulation", desc: "Optimizes layouts and staffing, saving labor hours." },
+                        { type: 'vision', app: "Automated Scanning", desc: "High-speed barcode/QR code scanning for inventory accuracy." },
+                        { type: 'generative', app: "Optimized Layout Generation", desc: "AI designs efficient warehouse layouts based on demand patterns." }
+                    ]
+                },
+                manufacturing: {
+                    name: "Manufacturing Support",
+                    inputs: "Production Schedules, Bill of Materials (BOM), Inbound Components",
+                    activities: "JIT/JIS Delivery, Kitting, Sequencing, Sub-assembly, Line Feeding",
+                    outputs: "Production-Ready Components, Synchronized Flow, Real-time Visibility",
+                    ai: [
+                        { type: 'predictive', app: "Component Demand Forecasting", desc: "AI predicts component needs for true JIT delivery." },
+                        { type: 'robotics', app: "Automated Line Feeding", desc: "AMRs transport parts from warehouse to assembly line autonomously." },
+                        { type: 'vision', app: "Kit Content Verification", desc: "Vision systems ensure kits are complete and correct before line delivery." }
+                    ]
+                },
+                reverse: {
+                    name: "Aftermarket & Reverse Logistics",
+                    inputs: "Returned Products, RMA Data, Spare Part Orders, Disposition Rules",
+                    activities: "Returns Processing, Triage (Inspection, Grading), Repair, Refurbishment, Recycling",
+                    outputs: "Restocked/Repaired Goods, Value Recovery, Compliance Records",
+                    ai: [
+                        { type: 'predictive', app: "Optimized Disposition Analysis", desc: "AI determines the most profitable path for each returned item (resell, repair, recycle)." },
+                        { type: 'vision', app: "Automated Grading of Returns", desc: "AI vision systems automatically identify defects and grade product condition." },
+                        { type: 'generative', app: "Customer Service Chatbots", desc: "GenAI handles RMA initiation and answers customer questions about returns 24/7." }
+                    ]
+                }
+            }
+        },
+        freight: {
+            name: "Freight Management",
+            processes: {
+                forwarding: {
+                    name: "Freight Forwarding",
+                    inputs: "Customer Request (Quote/Booking), Shipment Details, Commercial Docs",
+                    activities: "Quoting & Booking, Carrier Selection, Consolidation (LCL/LTL), Route Planning",
+                    outputs: "Transported Goods (POD), Cleared Customs, Invoicing",
+                    ai: [
+                        { type: 'predictive', app: "Dynamic Route Optimization", desc: "AI models from partners like DCbrain find the most efficient routes in real-time." },
+                        { type: 'robotics', app: "Autonomous Trucking Pilots", desc: "Partnerships with Kodiak Robotics explore driverless long-haul transport." },
+                        { type: 'generative', app: "Conversational Interface (myCEVA)", desc: "Users can book shipments or get status updates using natural language queries." }
+                    ]
+                },
+                customs: {
+                    name: "Customs Brokerage",
+                    inputs: "Shipment Documentation, Product Information, Regulatory Data",
+                    activities: "Document Verification, Tariff (HS Code) Classification, Duty Calculation, Declaration Filing",
+                    outputs: "Customs Clearance, Compliance Record, Duty & Tax Payment",
+                    ai: [
+                        { type: 'generative', app: "Intelligent Document Processing (IDP)", desc: "AI reads invoices and auto-populates customs declarations, reducing data entry by 90%." },
+                        { type: 'predictive', app: "Intelligent HS Code Classification", desc: "ML models suggest the correct tariff code based on product descriptions, improving compliance." },
+                        { type: 'robotics', app: "RPA for Declaration Submission", desc: "Bots automate the final step of submitting files to government portals." }
+                    ]
+                }
+            }
+        }
+    };
+
+    const navButtons = document.querySelectorAll('.nav-button');
+    const contentSections = document.querySelectorAll('.content-section');
+    const divisionSelector = document.getElementById('division-selector');
+    const processSelector = document.getElementById('process-selector');
+    const processDetailsContainer = document.getElementById('process-details');
+    const aiFilterButtons = document.querySelectorAll('.ai-filter-btn');
+    const aiApplicationCardsContainer = document.getElementById('ai-application-cards');
+    
+    function showSection(targetId) {
+        contentSections.forEach(section => {
+            section.classList.toggle('active', section.id === targetId);
+        });
+        navButtons.forEach(button => {
+            button.classList.toggle('active', button.dataset.target === targetId);
+        });
+    }
+
+    navButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            showSection(button.dataset.target);
+        });
+    });
+
+    function populateProcessSelector(divisionKey) {
+        const division = processData[divisionKey];
+        processSelector.innerHTML = '';
+        Object.keys(division.processes).forEach(processKey => {
+            const option = document.createElement('option');
+            option.value = processKey;
+            option.textContent = division.processes[processKey].name;
+            processSelector.appendChild(option);
+        });
+    }
+
+    function renderProcessDetails() {
+        const divisionKey = divisionSelector.value;
+        const processKey = processSelector.value;
+        if (!divisionKey || !processKey) return;
+
+        const process = processData[divisionKey].processes[processKey];
+        let aiHtml = process.ai.map(app => `
+            <div class="bg-slate-50 border border-slate-200 p-4 rounded-lg">
+                <h5 class="font-bold text-sky-700">${app.app}</h5>
+                <p class="text-slate-600 text-sm">${app.desc}</p>
+            </div>
+        `).join('');
+
+        processDetailsContainer.innerHTML = `
+            <div class="border-t border-slate-200 pt-6">
+                <h3 class="text-xl font-bold mb-4">${process.name}</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center text-center">
+                    <div class="p-4 bg-white rounded-lg">
+                        <h4 class="font-semibold text-lg mb-2">Inputs</h4>
+                        <p class="text-slate-600 text-sm">${process.inputs}</p>
+                    </div>
+                     <div class="text-sky-500 text-3xl font-bold hidden md:block">→</div>
+                    <div class="p-4 bg-white rounded-lg">
+                        <h4 class="font-semibold text-lg mb-2">Activities</h4>
+                        <p class="text-slate-600 text-sm">${process.activities}</p>
+                    </div>
+                     <div class="text-sky-500 text-3xl font-bold hidden md:block">→</div>
+                    <div class="p-4 bg-white rounded-lg">
+                        <h4 class="font-semibold text-lg mb-2">Outputs</h4>
+                        <p class="text-slate-600 text-sm">${process.outputs}</p>
+                    </div>
+                </div>
+
+                <div class="mt-8">
+                    <h4 class="text-lg font-semibold mb-4 text-sky-800">Key AI Applications</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        ${aiHtml}
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    function renderAiApplicationCards(filterType = null) {
+        let allApplications = [];
+        Object.values(processData).forEach(division => {
+            Object.values(division.processes).forEach(process => {
+                if(process.ai) {
+                    process.ai.forEach(app => {
+                        allApplications.push({ ...app, processName: process.name });
+                    });
+                }
+            });
+        });
+
+        const filteredApps = filterType ? allApplications.filter(app => app.type === filterType) : allApplications;
+
+        aiApplicationCardsContainer.innerHTML = filteredApps.map(app => `
+            <div class="border bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                <span class="text-xs font-semibold uppercase text-sky-600">${app.processName}</span>
+                <h4 class="font-bold mt-1">${app.app}</h4>
+                <p class="text-sm text-slate-500 mt-1">${app.desc}</p>
+            </div>
+        `).join('');
+    }
+
+    divisionSelector.addEventListener('change', () => {
+        populateProcessSelector(divisionSelector.value);
+        renderProcessDetails();
+    });
+
+    processSelector.addEventListener('change', renderProcessDetails);
+
+    aiFilterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            renderAiApplicationCards(button.dataset.ai);
+        });
+    });
+
+    function renderAiImpactChart() {
+        const ctx = document.getElementById('aiImpactChart').getContext('2d');
+        const data = {
+            labels: ['Warehousing', 'Manufacturing Support', 'Reverse Logistics', 'Freight Forwarding', 'Customs Brokerage'],
+            datasets: [
+                {
+                    label: 'Predictive Analytics',
+                    data: [8, 9, 7, 9, 8],
+                    backgroundColor: 'rgba(56, 189, 248, 0.2)',
+                    borderColor: 'rgba(56, 189, 248, 1)',
+                    pointBackgroundColor: 'rgba(56, 189, 248, 1)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgba(56, 189, 248, 1)',
+                },
+                {
+                    label: 'Robotics/Automation',
+                    data: [9, 6, 5, 7, 4],
+                    backgroundColor: 'rgba(16, 185, 129, 0.2)',
+                    borderColor: 'rgba(16, 185, 129, 1)',
+                    pointBackgroundColor: 'rgba(16, 185, 129, 1)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgba(16, 185, 129, 1)',
+                },
+                {
+                    label: 'Generative AI',
+                    data: [5, 4, 7, 8, 9],
+                    backgroundColor: 'rgba(124, 58, 237, 0.2)',
+                    borderColor: 'rgba(124, 58, 237, 1)',
+                    pointBackgroundColor: 'rgba(124, 58, 237, 1)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgba(124, 58, 237, 1)',
+                }
+            ]
+        };
+
+        new Chart(ctx, {
+            type: 'radar',
+            data: data,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(0, 0, 0, 0.1)' },
+                        grid: { color: 'rgba(0, 0, 0, 0.1)' },
+                        pointLabels: { font: { size: 12 } },
+                        suggestedMin: 0,
+                        suggestedMax: 10,
+                        ticks: {
+                           backdropColor: 'rgba(255, 255, 255, 0.75)',
+                           stepSize: 2
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.dataset.label}: ${context.raw}`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    populateProcessSelector('contract');
+    renderProcessDetails();
+    renderAiApplicationCards();
+    renderAiImpactChart();
+});
+</script>
+
+</body>
+</html>
