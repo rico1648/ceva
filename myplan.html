@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEVA Malaysia: Strategic AI Talent Roadmap</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Serene Tech (Muted Blues & Grays) -->
+    <!-- Application Structure Plan: The SPA is designed as a strategic proposal document. It uses a clean, top-down narrative flow starting with the core philosophy, then moving to foundational culture, and culminating in the main interactive element: a phased action plan. The action plan uses a tabbed interface ("Crawl, Walk, Run") which is the most effective way to present a multi-stage strategy, allowing users to focus on one phase at a time without being overwhelmed. This structure makes a complex, multi-year plan digestible and easy to navigate. The addition of a dedicated section for external partnerships at the end provides a practical, resource-oriented conclusion. -->
+    <!-- Visualization & Content Choices: 
+        - [Phase Tabs]: Report Info: The "Crawl, Walk, Run" stages of the talent plan. Goal: Organize/Navigate. Viz: Interactive buttons that toggle content visibility. Interaction: On-click shows/hides relevant phase details. Justification: A classic, user-friendly UI pattern for breaking down sequential information. Library: Vanilla JS.
+        - [Action Item Cards]: Report Info: Specific training and strategic actions for each phase. Goal: Inform/Detail. Viz: Styled cards with clear headings, descriptions, and tags. Interaction: None, static display. Justification: Organizes detailed information into scannable, visually distinct blocks. Library: Tailwind CSS.
+        - [Highlighted "AI Champions" Section]: Report Info: The user's specific request for advanced courses. Goal: Emphasize/Detail. Viz: A card with a different background color and prominent icon. Interaction: None. Justification: The visual distinction immediately draws the user's eye to this key addition, fulfilling their requirement directly. Library: Tailwind CSS.
+        - [Icons]: Report Info: Thematic elements for each action. Goal: Visual cueing. Viz: Unicode characters. Interaction: None. Justification: Lightweight, no dependencies, and adds a layer of visual communication.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .phase-button { transition: all 0.3s ease; }
+        .phase-button.active { background-color: #0369a1; color: white; border-color: #0369a1; }
+        .phase-button:not(.active) { background-color: #f8fafc; color: #334155; border-color: #e2e8f0; }
+        .phase-button:not(.active):hover { background-color: #f1f5f9; border-color: #cbd5e1; }
+        .phase-content { display: none; }
+        .phase-content.active { display: block; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <div class="min-h-screen">
+        <header class="bg-white shadow-sm">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+                <div class="flex items-center space-x-4">
+                    <span class="bg-sky-600 text-white font-bold text-2xl w-12 h-12 flex items-center justify-center rounded-lg">C</span>
+                    <div>
+                        <h1 class="text-2xl font-bold text-slate-900">Strategic Talent Roadmap for AI Adoption</h1>
+                        <p class="text-md text-sky-700 font-medium">CEVA Logistics Malaysia</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+            <!-- Introduction -->
+            <section class="mb-10">
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h2 class="text-xl font-bold text-sky-800 mb-3">Our Guiding Philosophy: People-First, Tech-Enabled</h2>
+                    <p class="text-slate-600 mb-4">
+                        This roadmap outlines a practical, phased approach to building the internal capabilities required for CEVA Malaysia to successfully adopt and leverage AI. The goal is not to replace staff, but to augment their skills, making their roles more strategic and valuable. Success depends on investing in our people with the same commitment we invest in our technology.
+                    </p>
+                    <div class="flex items-center justify-center space-x-2 md:space-x-4 text-center text-slate-500 font-medium">
+                        <div class="p-3 rounded-md">Crawl</div>
+                        <div class="text-sky-500 font-bold text-xl">→</div>
+                        <div class="p-3 rounded-md">Walk</div>
+                        <div class="text-sky-500 font-bold text-xl">→</div>
+                        <div class="p-3 rounded-md">Run</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pillar 1: Culture -->
+            <section class="mb-10">
+                 <div class="bg-white p-6 rounded-lg shadow">
+                    <h2 class="text-xl font-bold text-sky-800 mb-4">Pillar 1: Fostering an AI-Ready Culture</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-slate-50 p-4 rounded-lg border">
+                            <h3 class="font-semibold text-slate-700">Communicate the "Why"</h3>
+                            <p class="text-sm text-slate-600 mt-1">Clearly articulate AI as a tool for job enhancement and competitiveness, not replacement. Build trust through transparency.</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-lg border">
+                            <h3 class="font-semibold text-slate-700">Demystify AI</h3>
+                            <p class="text-sm text-slate-600 mt-1">Use relatable, everyday examples to make AI less intimidating and more understandable for everyone.</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-lg border">
+                            <h3 class="font-semibold text-slate-700">Incentivize Learning</h3>
+                            <p class="text-sm text-slate-600 mt-1">Publicly recognize and reward employees who participate in training and become early adopters of new tools.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Pillar 2: Phased Action Plan -->
+            <section>
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h2 class="text-xl font-bold text-sky-800 mb-2">Pillar 2: Phased Upskilling Action Plan</h2>
+                    <p class="text-slate-600 mb-6">Select a phase to view the specific training and strategic actions for that period.</p>
+
+                    <!-- Phase Navigation -->
+                    <div class="grid grid-cols-3 gap-2 mb-6">
+                        <button data-phase="crawl" class="phase-button active flex-1 text-center font-medium py-3 px-4 rounded-lg border-2">Phase 1: Crawl (Year 1)</button>
+                        <button data-phase="walk" class="phase-button flex-1 text-center font-medium py-3 px-4 rounded-lg border-2">Phase 2: Walk (Years 2-3)</button>
+                        <button data-phase="run" class="phase-button flex-1 text-center font-medium py-3 px-4 rounded-lg border-2">Phase 3: Run (Years 4-5)</button>
+                    </div>
+
+                    <!-- Phase 1: Crawl Content -->
+                    <div id="crawl" class="phase-content active">
+                        <h3 class="text-lg font-semibold text-slate-700 mb-4">Goal: Build a baseline of AI and data literacy across the organization.</h3>
+                        <div class="space-y-4">
+                            <div class="p-4 border rounded-lg">
+                                <h4 class="font-bold">1. AI Literacy for All</h4>
+                                <p class="text-slate-600 mt-1">Enroll all office-based staff in foundational online courses like "AI for Everyone." This is a high-impact, low-cost initiative to create a common language.</p>
+                                <span class="inline-block bg-slate-200 text-slate-600 text-xs font-medium mt-2 px-2 py-1 rounded-full">Target: All Staff</span>
+                            </div>
+                            
+                            <div class="p-4 border rounded-lg bg-sky-50 border-sky-200">
+                                <h4 class="font-bold text-sky-900">🧠 2. Advanced Track for AI Champions</h4>
+                                <p class="text-slate-700 mt-1">Identify 5-10 enthusiastic employees to become "AI Champions." Provide them with advanced training to improve critical thinking, problem-solving, and innovation brainstorming for AI applications.</p>
+                                <div class="mt-3 border-t border-sky-200 pt-3">
+                                    <p class="font-semibold text-sm text-slate-800">Key Learning Modules:</p>
+                                    <ul class="list-disc list-inside text-slate-600 text-sm mt-1 space-y-1">
+                                        <li><strong>Mental Models for AI:</strong> Training on frameworks like "First Principles Thinking" and "Systems Thinking" to deconstruct business problems and identify where AI can truly add value.</li>
+                                        <li><strong>Design Thinking for AI:</strong> A hands-on workshop to learn user-centric problem-solving, enabling champions to brainstorm and prototype practical, human-centered AI solutions.</li>
+                                        <li><strong>Innovation & Brainstorming:</strong> Techniques to lead brainstorming sessions and evaluate the feasibility and impact of new AI-driven ideas from their teams.</li>
+                                    </ul>
+                                </div>
+                                <span class="inline-block bg-sky-200 text-sky-800 text-xs font-medium mt-3 px-2 py-1 rounded-full">Target: High-Potential Staff</span>
+                            </div>
+
+                            <div class="p-4 border rounded-lg">
+                                <h4 class="font-bold">3. Targeted Tool-Specific Training</h4>
+                                <p class="text-slate-600 mt-1">Mandate vendor-led training for the team piloting Intelligent Document Processing (IDP). Focus on system usage, output interpretation, and exception handling.</p>
+                                <span class="inline-block bg-slate-200 text-slate-600 text-xs font-medium mt-2 px-2 py-1 rounded-full">Target: Customs Team</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 2: Walk Content -->
+                    <div id="walk" class="phase-content">
+                        <h3 class="text-lg font-semibold text-slate-700 mb-4">Goal: Cultivate specialists who can actively manage and leverage new systems.</h3>
+                         <div class="space-y-4">
+                            <div class="p-4 border rounded-lg">
+                                <h4 class="font-bold">1. Form Cross-Functional Pilot Teams</h4>
+                                <p class="text-slate-600 mt-1">Create dedicated teams (warehouse supervisors, IT, AI Champions) to work alongside vendors during the robotics and routing AI rollouts, building crucial in-house expertise.</p>
+                                <span class="inline-block bg-slate-200 text-slate-600 text-xs font-medium mt-2 px-2 py-1 rounded-full">Target: Project Teams</span>
+                            </div>
+                            <div class="p-4 border rounded-lg">
+                                <h4 class="font-bold">2. Create a "Data Analyst" Pathway</h4>
+                                <p class="text-slate-600 mt-1">Select top AI Champions for structured training in Power BI, advanced Excel, and basic SQL. They will analyze AI system data and create performance dashboards.</p>
+                                <span class="inline-block bg-slate-200 text-slate-600 text-xs font-medium mt-2 px-2 py-1 rounded-full">Target: Top AI Champions</span>
+                            </div>
+                            <div class="p-4 border rounded-lg">
+                                <h4 class="font-bold">3. Vendor-Led Maintenance Training</h4>
+                                <p class="text-slate-600 mt-1">Ensure contracts for robotics include "train-the-trainer" modules for first-level maintenance, reducing reliance on expensive external support.</p>
+                                <span class="inline-block bg-slate-200 text-slate-600 text-xs font-medium mt-2 px-2 py-1 rounded-full">Target: IT & Maintenance Teams</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 3: Run Content -->
+                    <div id="run" class="phase-content">
+                        <h3 class="text-lg font-semibold text-slate-700 mb-4">Goal: Establish a self-sufficient team that can improve AI and innovate.</h3>
+                        <div class="space-y-4">
+                            <div class="p-4 border rounded-lg">
+                                <h4 class="font-bold">1. Establish "Center of Excellence (CoE) Lite"</h4>
+                                <p class="text-slate-600 mt-1">Formalize the roles of Data Analysts and senior AI Champions into a small CoE (2-3 people) to own the local AI strategy, scout new tools, and report on ROI.</p>
+                                <span class="inline-block bg-slate-200 text-slate-600 text-xs font-medium mt-2 px-2 py-1 rounded-full">Target: Senior Specialists</span>
+                            </div>
+                            <div class="p-4 border rounded-lg">
+                                <h4 class="font-bold">2. Global Secondment Program</h4>
+                                <p class="text-slate-600 mt-1">Send the most promising CoE member to a global CEVA hub with a mature AI program for 3-6 months to transfer deep, practical knowledge back to Malaysia.</p>
+                                <span class="inline-block bg-slate-200 text-slate-600 text-xs font-medium mt-2 px-2 py-1 rounded-full">Target: CoE Lead</span>
+                            </div>
+                            <div class="p-4 border rounded-lg">
+                                <h4 class="font-bold">3. University Partnerships & Internships</h4>
+                                <p class="text-slate-600 mt-1">Build relationships with local universities (e.g., UM, UTM) for student projects and internships, creating a low-cost pipeline for fresh talent and ideas.</p>
+                                <span class="inline-block bg-slate-200 text-slate-600 text-xs font-medium mt-2 px-2 py-1 rounded-full">Target: HR & CoE</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+             <!-- Pillar 3: Partnerships -->
+            <section class="mt-10">
+                 <div class="bg-white p-6 rounded-lg shadow">
+                    <h2 class="text-xl font-bold text-sky-800 mb-4">Pillar 3: Leveraging External Partnerships</h2>
+                    <p class="text-slate-600 mb-4">To maximize our resources, we must actively engage with national bodies and academic institutions.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-slate-50 p-4 rounded-lg border">
+                            <h3 class="font-semibold text-slate-700">Government Bodies</h3>
+                            <p class="text-sm text-slate-600 mt-1">Engage with <strong class="font-bold">MDEC</strong> for digitalization grants and register all training with <strong class="font-bold">HRD Corp</strong> to utilize the national training fund, significantly reducing costs.</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-lg border">
+                            <h3 class="font-semibold text-slate-700">Academic Institutions</h3>
+                            <p class="text-sm text-slate-600 mt-1">Partner with local universities for internships and final-year projects to access a pipeline of fresh talent and innovative ideas at minimal cost.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const phaseButtons = document.querySelectorAll('.phase-button');
+    const phaseContents = document.querySelectorAll('.phase-content');
+
+    phaseButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetPhase = button.dataset.phase;
+
+            phaseButtons.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.phase === targetPhase);
+            });
+
+            phaseContents.forEach(content => {
+                content.classList.toggle('active', content.id === targetPhase);
+            });
+        });
+    });
+});
+</script>
+
+</body>
+</html>
